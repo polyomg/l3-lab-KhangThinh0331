@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <form action="/product/save" method="post">
+    <input name="name">
+    <input name="price">
+    <button>Save</button>
+  </form>
+  <ul>
+    <li>Name 1: <span th:text="${item.name}"></span></li>
+    <li>Price 1 : <span th:text="${item.price}"></span></li>
+  </ul>
+  <ul>
+    <li>Name 2: <span th:text="${itemss.name}"></span></li>
+    <li>Price 2 : <span th:text="${itemss.price}"></span></li>
+  </ul>
+  <h3>Danh sách sản phẩm (trang [[${currentPage}+1]] / [[${totalPages}]])</h3>
+  <table border="1">
+    <tr>
+      <th>Tên sản phẩm</th>
+      <th>Giá</th>
+    </tr>
+    <tr th:each="p : ${items}">
+      <td th:text="${p.name}">Tên SP</td>
+      <td th:text="${p.price}">Giá SP</td>
+    </tr>
+  </table>
+  <div>
+    <a th:if="${currentPage > 0}"
+       th:href="@{/product/form(page=${currentPage - 1})}">Trang trước</a>
+
+    <a th:if="${currentPage < totalPages - 1}"
+       th:href="@{/product/form(page=${currentPage+1})}">Trang sau</a>
+  </div>
+</body>
+</html>
