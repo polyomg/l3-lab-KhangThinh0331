@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <th:block th:each="item: ${items}">
+            <li>
+                <span th:text="${item.name}"></span>
+                <span th:text="${item.price}"></span> ::
+                [<a th:href="@{|/cart/add/${item.id}|}">Add To Cart</a>]
+            </li>
+        </th:block>
+    </ul>
+</body>
+</html>

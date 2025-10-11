@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/account/login" method="post">
+        <input name="username">
+        <input name="password">
+        <input type="checkbox" name="remember" value="true">
+        <button>Login</button>
+    </form>
+    <p style="color:red;" th:text="${message}"></p>
+</body>
+</html>
