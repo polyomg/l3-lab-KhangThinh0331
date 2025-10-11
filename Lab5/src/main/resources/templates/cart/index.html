@@ -30,6 +30,8 @@
             </td>
         </tr>
     </table>
+    <h3>Tổng tiền: <span th:text="${cart.getAmount()}"></span> VNĐ</h3>
+    <h3>Tổng số lượng: <span th:text="${cart.getCount()}"></span></h3>
     <br>
     <a href="/cart/clear">Clear Cart</a> |
     <a href="/item/index">Add more</a>

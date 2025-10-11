@@ -8,6 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @Controller
 public class AccountController {
@@ -39,5 +43,32 @@ public class AccountController {
             model.addAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
         }
         return "/account/login";
+    }
+
+    @GetMapping("/account/register")
+    public String register1() {
+        return "/account/register";
+    }
+    @PostMapping("/account/register")
+    public String register2(Model model, @RequestParam("image") MultipartFile file) {
+        try {
+            String username = paramService.getString("username", "");
+            String password = paramService.getString("password", "");
+
+            File savedFile = paramService.save(file, "/uploads");
+
+            if (savedFile != null&&!username.trim().isEmpty()&&!password.trim().isEmpty()) {
+                model.addAttribute("message",
+                        "Đăng ký thành công! Ảnh đã lưu tại: " + savedFile.getAbsolutePath());
+            } else {
+                model.addAttribute("message", "Không đủ thông tin!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Lỗi: " + e.getMessage());
+        }
+
+        return "/account/register";
     }
 }

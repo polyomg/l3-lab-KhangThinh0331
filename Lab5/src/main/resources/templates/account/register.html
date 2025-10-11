@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/account/register" method="post" enctype="multipart/form-data">
+        <input name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="file" name="image">
+        <button type="submit">Register</button>
+    </form>
+    <p style="color:red;" th:text="${message}"></p>
+    <a href="/account/login">Login</a>
+</body>
+</html>

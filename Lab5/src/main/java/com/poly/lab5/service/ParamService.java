@@ -81,7 +81,7 @@ public class ParamService {
         }
         try {
             // Lấy đường dẫn tuyệt đối của thư mục lưu file
-            String realPath = request.getServletContext().getRealPath(path);
+            String realPath = System.getProperty("user.dir") + path;
             File dir = new File(realPath);
             if (!dir.exists()) {
                 dir.mkdirs();
