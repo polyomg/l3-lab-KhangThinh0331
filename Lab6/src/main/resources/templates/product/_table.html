@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="table">
+        <table border="1" style="width:100%">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Create Date</th>
+                <th>Available</th>
+                <th>Category Id</th>
+                <th></th>
+            </tr>
+            <th:block th:each="item: ${items}">
+                <tr>
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.image}"></td>
+                    <td th:text="${item.price}"></td>
+                    <td th:text="${item.createDate}"></td>
+                    <td th:text="${item.available}"></td>
+                    <td th:text="${item.category.id}"></td>
+                    <td>
+                        <a th:href="@{|/product/edit/${item.id}|}">Edit</a>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <span th:text="${message}"></span>
+    </div>
+</body>
+</html>

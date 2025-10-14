@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:fragment="form">
+        <form action="/product/index" th:object="${item}">
+            <input th:field="*{id}" placeholder="Product Id?" readonly="readonly"/>
+            <input th:field="*{name}" placeholder="Product Name?"/>
+            <input th:field="*{image}" placeholder="Product Image?"/>
+            <input th:field="*{price}" placeholder="Product Price?" type="number"/>
+            <input th:field="*{createDate}" placeholder="Product Create Date?" type="date"/>
+            <label>
+                <input type="radio" th:field="*{available}" value="true" /> Còn hàng
+            </label>
+            <label>
+                <input type="radio" th:field="*{available}" value="false" /> Hết hàng
+            </label>
+            <input th:field="*{category.id}" placeholder="Category Id?"/>
+            <hr>
+            <button formaction="/product/create">Create</button>
+            <button formaction="/product/update">Update</button>
+            <a th:href="@{|/product/delete/${item.id}|}">Delete</a>
+            <a href="/product/index">Reset</a>
+        </form>
+    </div>
+</body>
+</html>
