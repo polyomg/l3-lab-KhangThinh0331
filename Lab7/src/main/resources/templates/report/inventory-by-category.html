@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" style="width:100%">
+        <tr>
+            <th>Loại hàng</th>
+            <th>Tổng giá</th>
+            <th>Số sản phẩm</th>
+        </tr>
+        <th:block th:each="item : ${items}">
+            <tr>
+                <td th:text="${item.group.name}"></td>
+                <td th:text="${item.sum}"></td>
+                <td th:text="${item.count}"></td>
+            </tr>
+        </th:block>
+    </table>
+</body>
+</html>
